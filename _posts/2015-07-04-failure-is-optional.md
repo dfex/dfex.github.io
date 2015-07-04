@@ -16,48 +16,45 @@ Let's start with a quick primer on SRX Redundant Ethernet (Reth) Interfaces and 
 
 Firstly, one or more physical ports from each SRX chassis-cluster node are assigned to a Reth interface:
 
-```
-ge-0/0/4 {
-    gigether-options {
-        redundant-parent reth4;
-    }
-}
-ge-5/0/5 {
-    gigether-options {
-        redundant-parent reth4;
-    }
-}
-ge-5/0/4 {
-    gigether-options {
-        redundant-parent reth4;
-    }
-}
-ge-5/0/5 {
-    gigether-options {
-        redundant-parent reth4;
-    }
-}
-```
-
-Under the reth interface we configure LACP
-
-```
-reth4 {
-    redundant-ether-options {
-        redundancy-group 4;
-        minimum-links 1;
-        lacp {
-            active;
+    ge-0/0/4 {
+        gigether-options {
+            redundant-parent reth4;
         }
     }
-    unit 0 {
-        description INTERNET;
-        family inet {
-            address 203.24.22.50/29;
+    ge-5/0/5 {
+        gigether-options {
+            redundant-parent reth4;
         }
     }
-}
-```
+    ge-5/0/4 {
+        gigether-options {
+            redundant-parent reth4;
+        }
+    }
+    ge-5/0/5 {
+        gigether-options {
+            redundant-parent reth4;
+        }
+    }
+
+
+Under the reth interface we configure LACP:
+
+    reth4 {
+        redundant-ether-options {
+            redundancy-group 4;
+            minimum-links 1;
+            lacp {
+                active;
+            }
+        }
+        unit 0 {
+            description INTERNET;
+            family inet {
+                address 203.24.22.50/29;
+            }
+        }
+    }
 
 Behind the scenes this creates two distinct LACP sub-LAGs, one from each physical SRX node to the downstream device.  
 
