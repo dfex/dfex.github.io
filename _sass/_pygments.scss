@@ -1,6 +1,7 @@
 .highlight {
 	margin-bottom: 1.5em;
-	@include font(14);
+	@include font(12);
+	font: 120%;
 	color: #d1f8f3; 
 	border: 1px solid darken($body-color, 5);
 	background-color: #212932;
