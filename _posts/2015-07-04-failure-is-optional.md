@@ -15,7 +15,8 @@ I've been building and deploying SRX Firewall clusters for a good 6 years now an
 Let's start with a quick primer on SRX Redundant Ethernet (Reth) Interfaces and LACP:
 
 Firstly, one or more physical ports from each SRX chassis-cluster node are assigned to a Reth interface:
-
+{% highlight%}
+{% raw %}
     ge-0/0/4 {
         gigether-options {
             redundant-parent reth4;
@@ -36,7 +37,8 @@ Firstly, one or more physical ports from each SRX chassis-cluster node are assig
             redundant-parent reth4;
         }
     }
-
+{% endraw %}
+{% endhighlight %}
 
 Under the reth interface we configure LACP:
 
