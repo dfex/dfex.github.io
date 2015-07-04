@@ -142,7 +142,7 @@ Redundancy group: 6 , Failover count: 0
 {% endraw %}
 {% endhighlight %}
 
-I will digress here for a moment and say that to this day, I still can't think of a single reason why this behaviour is ever desirable - we now return you to your scheduled blog entry
+I will digress here for a moment and say that to this day, I still can't think of a single reason why this behaviour is ever desirable.  If you've got a topology that benefits somehow from completely losing a reth without failing over, I want to know about it! :) 
 
 Each redundancy group has an in-built Threshold counter which determines when fail-over to the secondary node will occur - this value is set to be 255 under normal conditions.
 
