@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Failure is optional
+title: Failure is optional - SRX Reth Groups and LACP
 description: "SRX Reth Groups and LACP"
 modified: 2015-07-04
 tags: [junos, srx, lacp, reth, chassis-cluster, redundancy-groups]
@@ -127,7 +127,7 @@ Redundancy group: 0 , Failover count: 0
     node1                   50          secondary      no       no  
 
 Redundancy group: 4 , Failover count: 0
-    node0                   100       **primary**      yes      no  
+    node0                   100         primary        yes      no  
     node1                   50          secondary      yes      no  
 
 Redundancy group: 5 , Failover count: 0
