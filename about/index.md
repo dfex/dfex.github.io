@@ -12,6 +12,7 @@ modified: 2015-07-04
 My name is Ben and I'm a Network and Systems Engineer for [Comlinx](http://www.comlinx.com.au) in beautiful Brisbane, Australia.
 
 My technical interests are:
+
 * Good, re-useable template-driven network design
 * Automating repetitive and error-prone tasks
 * Optical Transport and WDM
