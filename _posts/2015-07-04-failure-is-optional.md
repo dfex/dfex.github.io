@@ -4,10 +4,6 @@ title: Failure is optional
 description: "SRX Reth Groups and LACP"
 modified: 2015-07-04
 tags: [junos, srx, lacp, reth, chassis-cluster, redundancy-groups]
-image:
-  feature: abstract-1.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
 ---
 
 I've been building and deploying SRX Firewall clusters for a good 6 years now and even managed to pick up a JNCIE-SEC along the way, but last week I stumbled across an interesting configuration feature when using LACP and Reth interfaces that I'd never seen documented before.
@@ -15,7 +11,7 @@ I've been building and deploying SRX Firewall clusters for a good 6 years now an
 Let's start with a quick primer on SRX Redundant Ethernet (Reth) Interfaces and LACP:
 
 Firstly, one or more physical ports from each SRX chassis-cluster node are assigned to a Reth interface:
-
+{% highlight html %}
 {% raw %}
     ge-0/0/4 {
         gigether-options {
@@ -38,6 +34,7 @@ Firstly, one or more physical ports from each SRX chassis-cluster node are assig
         }
     }
 {% endraw %}
+{% endhighlight %}
 
 Under the reth interface we configure LACP:
 
