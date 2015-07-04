@@ -1,7 +1,6 @@
 .highlight {
 	margin-bottom: 1.5em;
-	/*@include font(12);*/
-	font-size: 28pt;
+	@include font(12);
 	color: #d1f8f3; 
 	border: 1px solid darken($body-color, 5);
 	background-color: #212932;
@@ -11,6 +10,7 @@
 		margin: 0;
 		padding: 1em;
 	}
+	.raw font-size: 120%;
 	.lineno { padding-right: 24px; color: #8f908a;}
 	.hll { background-color: #49483e }  
 	.c { color: #75715e } /* Comment */
