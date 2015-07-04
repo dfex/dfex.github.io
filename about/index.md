@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About the authour
+title: About me
 image:
   feature: abstract-5.jpg
   credit: dargadgetz
@@ -9,24 +9,16 @@ comments: false
 modified: 2015-07-04
 ---
 
-Benjamin Dale
+My name is Ben and I'm a Network and Systems Engineer for [Comlinx](http://www.comlinx.com.au) in beautiful Brisbane, Australia.
 
-## What HPSTR brings to the table:
+My technical interests are:
+* Good, re-useable template-driven network design
+* Automating repetitive and error-prone tasks
+* Optical Transport and WDM
+* Software-Defined Networking - especially projects such as [OpenContrail](http://www.operncontrail.org) and [OpenDaylight](http://www.opendaylight.org) and what they mean for the industry
+* Python programming, especially when used to automate the configuration and operation of network infrastructure
+* MPLS Network Architectures and Designs
 
-* Responsive templates for post, page, and post index `_layouts`. Looks great on mobile, tablet, and desktop devices.
-* Gracefully degrads in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.  
-* Modern and minimal design.
-* Sweet animated menu.
-* Background image support.
-* Readable typography to make your words shine.
-* Support for large images to call out your favorite posts.
-* Built-in support for Sass courtesy of Jekyll 2.x.
-* Optional [Disqus](http://disqus.com) comments.
-* Simple and clear permalink structure[^1].
-* [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) support for a better social sharing experience.
-* Simple [custom 404 page]({{ site.url }}/404.html) to get you started.
-* Stylesheets for Pygments and Coderay [syntax highlighting]({{ site.url }}/code-highlighting-post/) to make your code examples look snazzy.
+I'm a big fan of [Junos](https://www.juniper.net/us/en/products-services/nos/junos/), but I also believe in using the right tool for the job. 
 
-<div markdown="0"><a href="{{ site.url }}/theme-setup/" class="btn btn-info">Theme Setup</a> <a href="https://github.com/mmistakes/hpstr-jekyll-theme" class="btn btn-success">Download HPSTR</a></div>
-
-[^1]: Example: *domain.com/category-name/post-title*
+If you like talking all things networking, then hit me up!
