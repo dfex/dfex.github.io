@@ -58,7 +58,10 @@ reth4 {
 {% endraw %}
 {% endhighlight %}
 
-Behind the scenes this creates two distinct LACP sub-LAGs, one from each physical SRX node to the downstream device.  
+Behind the scenes this creates two distinct LACP sub-LAGs, one from each physical SRX node to the downstream device:
+
+![SRX Reth LACP Topology]({{ site.url }}/images/reth-lacp-topology.png)
+{: .image-right}  
 
 The ```minimum-links``` option is so that each LACP sub-LAG is considered to be up while ever there is still at least one port active.
 
