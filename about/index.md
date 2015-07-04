@@ -9,7 +9,7 @@ comments: false
 modified: 2015-07-04
 ---
 
-My name is Ben and by day I'm a Network and Systems Engineer for [Comlinx](http://www.comlinx.com.au) in beautiful sunny Brisbane, Australia.
+My name is Ben and by day I'm a Network and Systems Engineer for [Comlinx](http://www.comlinx.com.au) in beautiful, sunny Brisbane, Australia.
 
 My technical interests are:
 
