@@ -9,7 +9,7 @@ comments: false
 modified: 2015-07-04
 ---
 
-My name is Ben and I'm a Network and Systems Engineer for [Comlinx](http://www.comlinx.com.au) in beautiful Brisbane, Australia.
+My name is Ben and by day I'm a Network and Systems Engineer for [Comlinx](http://www.comlinx.com.au) in beautiful sunny Brisbane, Australia.
 
 My technical interests are:
 
@@ -19,7 +19,8 @@ My technical interests are:
  * Software-Defined Networking - especially projects such as [OpenContrail](http://www.operncontrail.org) and [OpenDaylight](http://www.opendaylight.org) and what they mean for the industry
  * Python programming, especially when used to automate the configuration and operation of network infrastructure
  * MPLS Network Architectures and Designs
+ * Network visualisation
 
-I'm a big fan of [Junos](https://www.juniper.net/us/en/products-services/nos/junos/), but I also believe in using the right tool for the job. 
+I'm a big fan of [Junos](https://www.juniper.net/us/en/products-services/nos/junos/), [Ubuntu](http://www.ubuntu.com) and [OSX](http://www.apple.com/osx) but as always, there's nothing like the right tool for the job. 
 
 If you like talking all things networking, then hit me up!
