@@ -38,6 +38,8 @@ Firstly, one or more physical ports from each SRX chassis-cluster node are assig
 
 Under the reth interface we configure LACP:
 
+{% highlight html %}
+{% raw %}
     reth4 {
         redundant-ether-options {
             redundancy-group 4;
@@ -53,6 +55,8 @@ Under the reth interface we configure LACP:
             }
         }
     }
+{% endraw %}
+{% endhighlight %}
 
 Behind the scenes this creates two distinct LACP sub-LAGs, one from each physical SRX node to the downstream device.  
 
@@ -60,26 +64,29 @@ The ```minimum-links``` option is so that each LACP sub-LAG is considered to be 
 
 Finally we assign the Reth to a redundancy-group that specifies the "Primary" node on which interfaces in the Reth will be active by way of the ```priority``` (higher being more preferred), and optionally ```preempt``` fails the RG back to the primary node when it becomes available.
 
-```
+{% highlight html %}
+{% raw %}
 redundancy-group 4 {
     node 0 priority 100;
     node 1 priority 50;
     preempt;
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Something that isn't immediately obvious to newcomers is that given the above configuration, if both ge-0/0/4 and ge-0/0/5 are unplugged from the primary node, the minimum-links threshold will be crossed and the reth on the primary node will go down, however the redundancy-group will **NOT** fail over:
 
-```
-bdale@srx-lab-fw1# **run show interfaces terse ge-[05]/0/[45]**
+{% highlight html %}
+{% raw %}
+bdale@srx-lab-fw1# run show interfaces terse ge-[05]/0/[45]
 Interface               Admin Link Proto    Local                 Remote
-ge-0/0/4                up  **down**
-ge-0/0/5                up  **down**
+ge-0/0/4                up    down
+ge-0/0/5                up    down
 ge-5/0/4                up    up
 ge-5/0/5                up    up
 
 
-bdale@srx-lab-fw1# **run show lacp interfaces**
+bdale@srx-lab-fw1# run show lacp interfaces
 Aggregated interface: reth4
     LACP state:       Role   Exp   Def  Dist  Col  Syn  Aggr  Timeout  Activity
       ge-0/0/4       Actor    No   Yes    No   No   No   Yes     Fast    Active
@@ -97,7 +104,7 @@ Aggregated interface: reth4
       ge-5/0/5            Current         Fast periodic          Collecting Distributing
 
 
-bdale@srx-lab-fw1# **run show chassis cluster interfaces**
+bdale@srx-lab-fw1# run show chassis cluster interfaces
 ....
 Redundant-ethernet Information:     
     Name         Status      Redundancy-group
@@ -105,13 +112,13 @@ Redundant-ethernet Information:
     reth1        Down        Not configured   
     reth2        Down        Not configured   
     reth3        Down        Not configured   
-    reth4      **Down**      4                
+    reth4        Down        4                
     reth5        Up          5                
     reth6        Up          6                
     reth7        Down        Not configured   
 ...
 
-bdale@srx-lab-fw1# **run show chassis cluster status**
+bdale@srx-lab-fw1# run show chassis cluster status
 Cluster ID: 1 
 Node                  Priority          Status    Preempt  Manual failover
 
@@ -130,7 +137,8 @@ Redundancy group: 5 , Failover count: 0
 Redundancy group: 6 , Failover count: 0
     node0                   0           primary        yes      no  
     node1                   0           secondary      yes      no  
-
+{% endraw %}
+{% endhighlight %}
 
 I will digress here for a moment and say that to this day, I still can't think of a single reason why this behaviour is ever desirable - we now return you to your scheduled blog entry
 
@@ -138,7 +146,8 @@ Each redundancy group has an in-built Threshold counter which determines when fa
 
 Looking at our redundancy-group again, we now add in the ```interface-monitor``` statements, which specify a ```weight``` against physical interfaces.  
 
-```
+{% highlight html %}
+{% raw %}
 redundancy-group 4 {
     node 0 priority 100;
     node 1 priority 50;
@@ -150,7 +159,8 @@ redundancy-group 4 {
         ge-5/0/5 weight 128;
     }
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 Now whenever any of the four interfaces listed above goes down, their ```weight``` will be subtracted from the Redundancy-group threshold; when this threshold reaches 0, the redundancy-group will fail over and activate interfaces associated with reths associated with this redundancy group on the secondary node.
 
@@ -158,6 +168,8 @@ It should be noted that the physical interfaces being monitored don't have to be
 
 You can see the results of this using the hidden-until-recently command ```show chassis cluster information```
 
+{% highlight html %}
+{% raw %}
 bdale@srx-lab-fw1# run show chassis cluster information 
 node0:
 --------------------------------------------------------------------------
@@ -174,7 +186,8 @@ Redundancy group: 4, Threshold: 255, Monitoring failures: none
     Events:
         Jun 18 03:28:54.773 : hold->secondary, reason: Hold timer expired
         Jun 18 03:28:54.809 : secondary->primary, reason: Remote yield (0/0)
-
+{% endraw %}
+{% endhighlight %}
 
 In the example above, I've deliberately used a ```weight``` of 128 so that a single link loss will not cause fail-over, instead requiring that both links to a node go down before failing over - this configuration achieves the same thing as configuring ```minimum-links 1``` in the LACP bundle, except that it actually causes the fail-over to occur in a redundancy-group.
 
@@ -182,6 +195,7 @@ This seems somewhat (wait for it...) redundant to me.
 
 What I recently discovered however was that you can configure interface-monitor to monitor the Reth interface instead of the physical links that make it up eg:
 
+{% highlight html %}
 {% raw %}
 redundancy-group 4 {
     node 0 priority 100;
@@ -192,120 +206,8 @@ redundancy-group 4 {
     }
 }
 {% endraw %}
+{% endhighlight %}
 
 With this deployed, if the LACP sub-LAG bundle falls below ```minimum-links```, it is taken down as before, but now ```interface-monitor``` will detect this and fail the redundancy-group over.
 
 As an added bonus, the interface-monitor now has a dependency on the downstream device to be an active LACP participant, rather than just monitor physical link status - think of it as free BFD!
-
-Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.[^1]
-
-[^1]: <http://en.wikipedia.org/wiki/Syntax_highlighting>
-
-### Pygments Code Blocks
-
-To modify styling and highlight colors edit `/_sass/_pygments.scss`.
-
-{% highlight css %}
-#container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
-}
-{% endhighlight %}
-
-{% highlight html %}
-{% raw %}
-<nav class="pagination" role="navigation">
-    {% if page.previous %}
-        <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-    {% endif %}
-    {% if page.next %}
-        <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-    {% endif %}
-</nav><!-- /.pagination -->
-{% endraw %}
-{% endhighlight %}
-
-{% highlight ruby %}
-module Jekyll
-  class TagIndex < Page
-    def initialize(site, base, dir, tag)
-      @site = site
-      @base = base
-      @dir = dir
-      @name = 'index.html'
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&#8211;'
-      self.data['title'] = "#{tag_title_prefix}#{tag}"
-      self.data['description'] = "An archive of posts tagged #{tag}."
-    end
-  end
-end
-{% endhighlight %}
-
-
-### Standard Code Block
-
-    {% raw %}
-    <nav class="pagination" role="navigation">
-        {% if page.previous %}
-            <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-        {% endif %}
-        {% if page.next %}
-            <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-        {% endif %}
-    </nav><!-- /.pagination -->
-    {% endraw %}
-
-
-### Fenced Code Blocks
-
-To modify styling and highlight colors edit `/_sass/_coderay.scss`. Line numbers and a few other things can be modified in `_config.yml`. Consult [Jekyll's documentation](http://jekyllrb.com/docs/configuration/) for more information.
-
-~~~ css
-#container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
-}
-~~~
-
-~~~ html
-{% raw %}<nav class="pagination" role="navigation">
-    {% if page.previous %}
-        <a href="{{ site.url }}{{ page.previous.url }}" class="btn" title="{{ page.previous.title }}">Previous article</a>
-    {% endif %}
-    {% if page.next %}
-        <a href="{{ site.url }}{{ page.next.url }}" class="btn" title="{{ page.next.title }}">Next article</a>
-    {% endif %}
-</nav><!-- /.pagination -->{% endraw %}
-~~~
-
-~~~ ruby
-module Jekyll
-  class TagIndex < Page
-    def initialize(site, base, dir, tag)
-      @site = site
-      @base = base
-      @dir = dir
-      @name = 'index.html'
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&#8211;'
-      self.data['title'] = "#{tag_title_prefix}#{tag}"
-      self.data['description'] = "An archive of posts tagged #{tag}."
-    end
-  end
-end
-~~~
-
-### GitHub Gist Embed
-
-An example of a Gist embed below.
-
-{% gist mmistakes/6589546 %}
