@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Failure is optional - SRX Reth Interfaces and LACP
+title: Failure is optional - Reth Interfaces and LACP
 description: "SRX Reth Interfaces and LACP"
 modified: 2015-07-04
 tags: [junos, srx, lacp, reth, chassis-cluster, redundancy-groups]
 ---
 
-I've been building and deploying SRX Firewall clusters for a good 6 years now and even managed to pick up a JNCIE-SEC along the way, but last week I stumbled across an interesting configuration feature when using LACP and Reth interfaces that I'd never seen documented before.
+I've been building and deploying Juniper SRX Firewall clusters for a good 6 years now and even managed to pick up a JNCIE-SEC along the way, but last week I stumbled across an interesting configuration feature when using LACP and Reth interfaces that I'd never seen documented before.
 
 Let's start with a quick primer on SRX Redundant Ethernet (Reth) Interfaces and LACP:
 
