@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Failure is optional - SRX Reth Groups and LACP
-description: "SRX Reth Groups and LACP"
+title: Failure is optional - SRX Reth Interfaces and LACP
+description: "SRX Reth Interfaces and LACP"
 modified: 2015-07-04
 tags: [junos, srx, lacp, reth, chassis-cluster, redundancy-groups]
 ---
