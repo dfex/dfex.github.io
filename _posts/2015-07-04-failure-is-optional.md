@@ -195,6 +195,7 @@ In the example above, I've deliberately used a ```weight``` of 128 so that a sin
 
 This seems somewhat (wait for it...) redundant to me. 
 
+### A better way ###
 What I recently discovered however was that you can configure interface-monitor to monitor the Reth interface instead of the physical links that make it up eg:
 
 {% highlight html %}
@@ -211,5 +212,7 @@ redundancy-group 4 {
 {% endhighlight %}
 
 With this deployed, if the LACP sub-LAG bundle falls below ```minimum-links```, it is taken down as before, but now ```interface-monitor``` will detect this and fail the redundancy-group over.
+
+This also means that if you decide to scale the number of LACP ports up or down in the future, you don't have to fiddle with interface-monitor weights.
 
 As an added bonus, the interface-monitor now has a dependency on the downstream device to be an active LACP participant, rather than just monitor physical link status - think of it as free BFD!
