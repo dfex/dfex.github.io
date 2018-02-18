@@ -64,9 +64,9 @@ This should slow down the annihilation when your PyEZ automation script becomes 
 
 Junos implements quite a few UNIX commands in the shell that are exceptionally useful when parsing log or configuration files.
 
-For example: if you’re browsing through a configuration file and want to quickly move to a specific section of it, you can use / to perform a forward regex search eg: type show configuration and then /interfaces.
+For example: if you’re browsing through a configuration file and want to quickly move to a specific section of it, you can use <code>/</code> to perform a forward regex search eg: type <code>show configuration</code> and then <code>/interfaces</code>.
 
-In the same manner, you can search backwards for a section you wish to return to using ? to perform a reverse regex match eg: ?system will take you back to the system stanza (or to the first match of the string “system”).
+In the same manner, you can search backwards for a section you wish to return to using <code>?</code> to perform a reverse regex match eg: <code>?system</code> will take you back to the system stanza (or to the first match of the string <code>system</code>).
 
 When it comes to logging, we all know how frustrating it is having to troubleshoot issues sifting through on-box syslog files that are filled with hundreds of unrelated event messages.
 
@@ -103,7 +103,7 @@ Jun 29 15:39:38 15:39:38.221829:CID-0:RT:  flow session id 6285
 {% endraw %}
 {% endhighlight %}
 
-Firstly, it’s all double-spaced which is hard to read, so let’s just focus on lines with “Jun” in them:
+Firstly, it’s all double-spaced which is hard to read, so let’s just focus on lines with <code>Jun</code> in them:
 
 {% highlight html %}
 {% raw %}
@@ -138,7 +138,7 @@ Jun 29 15:39:38 15:39:38.222598:CID-0:RT: find flow: table 0x48924c18, hash 4274
 {% endraw %}
 {% endhighlight %}
 
-Now, let’s start culling entries that don’t appear to be useful like the ones mentioning vector and mbuf:
+Now, let’s start culling entries that don’t appear to be useful like the ones mentioning <code>vector</code> and <code>mbuf</code>:
 
 {% highlight html %}
 {% raw %}
@@ -182,7 +182,7 @@ monitor start messages | except alarmd | except mgd
 
 will give you realtime log output from all daemons except alarmd and mgd.
 
-And finally, don’t forget about <ctrl-r> or reverse search in the CLI.
+And finally, don’t forget about <code><ctrl-r></code> or reverse search in the CLI.
 
 This allows you to do a quick regex search of your CLI history so you can find that long command you entered earlier without having to press up arrow 47 times!
 
@@ -303,8 +303,8 @@ To enable, you need to configure it under your login class:
 
 {% highlight html %}
 {% raw %}
- set system login class onLikeDK permissions all
- set system login class onLikeDK configuration-breadcrumbs
+ set system login class CRUMBS permissions all
+ set system login class CRUMBS configuration-breadcrumbs
 {% endraw %}
 {% endhighlight %}
 
@@ -314,11 +314,11 @@ and then log back in again.
 
 This is one that I was shown by a customer very recently:
 
-When you perform a commit confirmed the configuration will be applied and then Junos will wait for a follow-up commit before it removes the rollback timer.
+When you perform a <code>commit confirmed</code> the configuration will be applied and then Junos will wait for a follow-up commit before it removes the rollback timer.
 
-On large clustered Junos deployments such as EX virtual chassis, or Branch SRX Chassis Clusters with large configurations, running this follow-up commit can take quite a bit of time as your configuration is re-checked and applied against each VC member, even though nothing is changing.
+On clustered Junos deployments such as EX virtual chassis, or Branch SRX Chassis Clusters with large configurations, running this follow-up <code>commit</code> can take quite a bit of time as your configuration is re-checked and applied against each VC member, even though nothing is changing.
 
-It is especially daunting when you commit confirmed for only a couple of minutes or so, and then realise your testing will actually take all of that time.
+It is especially daunting when you <code>commit confirmed</code> for only a minute or so, and then realise your testing will actually take up all of this time.
 
 It turns out that by running a <code>commit check</code> instead, Junos will re-validate the configuration (against the REs only) and then remove the rollback timer, saving what might be precious seconds or minutes during a change window.
 
