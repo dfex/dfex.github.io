@@ -320,7 +320,7 @@ On large clustered Junos deployments such as EX virtual chassis, or Branch SRX C
 
 It is especially daunting when you commit confirmed for only a couple of minutes or so, and then realise your testing will actually take all of that time.
 
-It turns out that by running a commit check instead, Junos will re-validate the configuration (against the REs only) and then remove the rollback timer, saving what might be precious seconds or minutes during a change window.
+It turns out that by running a <code>commit check</code> instead, Junos will re-validate the configuration (against the REs only) and then remove the rollback timer, saving what might be precious seconds or minutes during a change window.
 
 ## That’s just the Tip of it
 
