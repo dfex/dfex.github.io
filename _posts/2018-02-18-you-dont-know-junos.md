@@ -74,7 +74,7 @@ Well, along with the forward and backward regex matches described above, you can
 
 Here’s an example with a very verbose flow trace file on an SRX:
 
-{% highlight html %}
+{% highlight %}
 {% raw %}
 bdale@0ffnet-srx210-gw> show log FLOW
 Jun 29 15:39:38 15:39:38.221829:CID-0:RT:flow process pak, mbuf 0x42e06780, ifl 0, ctxt_type 0 inq type 5
