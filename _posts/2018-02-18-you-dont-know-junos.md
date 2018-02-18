@@ -14,11 +14,11 @@ I’m a bit more of a realist and while I’m completely onboard with the benefi
 
 So to start the ball rolling in 2018 with a *very* unfashionable topic, I’ve decided to put together a list of lesser-known Junos CLI magic that I’ve picked up over the years from other engineers, customers and pure serendipity that might help you.
 
-# Test
+#Test
 
-## Test 2
+##Test 2
 
-### Test 3
+###Test 3
 
 ## Protecting your assets
 
