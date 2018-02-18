@@ -14,7 +14,7 @@ I’m a bit more of a realist and while I’m completely onboard with the benefi
 
 So to start the ball rolling in 2018 with a *very* unfashionable topic, I’ve decided to put together a list of lesser-known Junos CLI magic that I’ve picked up over the years from other engineers, customers and pure serendipity that might help you.
 
-### Protecting your assets
+## Protecting your assets
 
 In the lab environment, or anywhere you are doing large scale automation it’s always best to err on the side of caution when making configuration changes.
 
@@ -60,7 +60,7 @@ commit
 
 This should slow down the annihilation when your PyEZ automation script becomes sentient!
 
-### Parse like a Boss
+## Parse like a Boss
 
 Junos implements quite a few UNIX commands in the shell that are exceptionally useful when parsing log or configuration files.
 
@@ -193,7 +193,7 @@ This allows you to do a quick regex search of your CLI history so you can find t
 {% endraw %}
 {% endhighlight %}
  
-### Realtime location tracking
+## Realtime location tracking
 
 Well, sort of…  Did you know that tucked away inside Junos is everybody’s favourite real-time traceroute implementation mtr?
 
@@ -233,7 +233,7 @@ Keys:  Help   Display mode   Restart statistics   Order of fields   quit
 
 Be advised that traceroute monitor is only available from within inet.0 though, which does limit it’s usefulness - if anyone from Juniper engineering is reading this - I’d love to see a routing-instance option added!
 
-### More Refreshments
+## More Refreshments
 
 And speaking of refreshing, another feature that doesn’t get much attention is the refresh action that you can pipe commands to.
 
@@ -310,7 +310,7 @@ To enable, you need to configure it under your login class:
 
 and then log back in again.
 
-### Are you committed?
+## Are you committed?
 
 This is one that I was shown by a customer very recently:
 
@@ -322,7 +322,7 @@ It is especially daunting when you commit confirmed for only a couple of minutes
 
 It turns out that by running a commit check instead, Junos will re-validate the configuration (against the REs only) and then remove the rollback timer, saving what might be precious seconds or minutes during a change window.
 
-### That’s just the Tip of it
+## That’s just the Tip of it
 
 Well, that’s about it for this post - hopefully you’ve picked up at least one new trick that will make your Junos CLI-fu that bit stronger.
 
