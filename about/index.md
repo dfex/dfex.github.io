@@ -23,11 +23,10 @@ My technical interests are:
 
 I'm a big fan of [Junos](https://www.juniper.net/us/en/products-services/nos/junos/), [Ubuntu](http://www.ubuntu.com) and [OSX](http://www.apple.com/osx) but as always, there's nothing like the right tool for the job. 
 
-On the weekends, you'll find me:
+When I'm not geeking out, I'm usually
 
- * Out in the garden with my girls, tending to my Chilli bushes
- * at the Sunshine Coast, Surfing, Kayaking and doing pretty much anything on the water
- * at pubs with local Craft beer and plenty of atmosphere
- * or enjoying grapes with my wife - particularly Australian Shiraz & Cabernets and New Zealand Sauvignon
+ * Hanging with my girls
+ * Lying on the ground in pain as my skateboard rolls off into the sunset, wishing I was 16 again
+ * Hanging out in beautiful Noosaville, Supping around the canals
 
 If you like talking all things networking, then hit me up!
