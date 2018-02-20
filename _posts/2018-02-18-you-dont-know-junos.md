@@ -8,6 +8,8 @@ tags: [junos, cli]
 
 The Junos Operating System is turning 20 next year (the First Release was July 7, 1998 according to Wikipedia) and still to this day it includes what is, in my opinion, the most powerful command line interface available on a networking device.
 
+![Running Junos]({{ site.url }}/images/running-junos.png)
+
 But with the current trend in networking to move towards fully automated, API-driven, SDN-orchestrated, Jinja2 templated nirvana, you’d be forgiven for thinking that switches will all ship with no CLI at all.
 
 I’m a bit more of a realist and while I’m completely onboard with the benefits of network automation, I (along with what I suspect are most other Network Engineers out there) also don’t want to have to punch out 400 lines of J2 template code every time I need to test out a new feature, or re-create a customer issue in the lab.
