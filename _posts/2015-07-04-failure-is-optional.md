@@ -18,7 +18,7 @@ ge-0/0/4 {
         redundant-parent reth4;
     }
 }
-ge-5/0/5 {
+ge-0/0/5 {
     gigether-options {
         redundant-parent reth4;
     }
